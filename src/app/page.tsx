@@ -1,7 +1,15 @@
 
+
+import { OwnerRepo } from "@/components/OwnerRepo"
+
 interface DataProps {
   id: string,
   name: string
+  owner:{
+    avatar_url: string,
+    login: string,
+
+  }
 }
 
 async function delayFetch(url: string, delay: number){
@@ -34,6 +42,12 @@ export default async function Home() {
         <div key={item.id}>
           <strong>Repositório: </strong><a>{item.name}</a>
           <br/>
+
+          <OwnerRepo
+          image_url= {item.owner.avatar_url}
+          name= {item.owner.login}
+          />
+
           <br/>
         </div>
       ))}
